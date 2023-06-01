@@ -1,9 +1,12 @@
 # Experiment--05-Implementation-of-flipflops-using-verilog
-### AIM: To implement all the flipflops using verilog and validating their functionality using their functional tables
-### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:   Quartus prime
-### THEORY 
-SR Flip-Flop
+## AIM:
+### To implement all the flipflops using verilog and validating their functionality using their functional tables
+## HARDWARE REQUIRED:  
+### PC, Cyclone II , USB flasher
+## SOFTWARE REQUIRED:   
+### Quartus prime
+## THEORY 
+### SR Flip-Flop
 SR flip-flop operates with only positive clock transitions or negative clock transitions. Whereas, SR latch operates with enable signal. The circuit diagram of SR flip-flop is shown in the following figure.
 
 ![image](https://user-images.githubusercontent.com/36288975/167910294-bb550548-b1dc-4cba-9044-31d9037d476b.png)
@@ -101,24 +104,100 @@ From the above characteristic table, we can directly write the next state equati
 Q(t+1)=T′Q(t)+TQ(t)′
 ⇒Q(t+1)=T⊕Q(t)
 
-### Procedure
-/* write all the steps invloved */
+## Procedure
++ Step-1 :
+Open Quartus II and select new project and choose the file location.
+
++ Step-2 :
+Module Declaration. Module should have the file name.
+
++ Step-3 :
+Declare Inputs and outputs.
+
++ Step-4 :
+Use assign declaration and wire to define the functionality of logic circuits.
+
++ Step-5 :
+End the program with endmodule.
+
++ Step-6 :
+Run the program and choose RTL viewer to get RTL realization.
 
 
 
-### PROGRAM 
-/*
+## PROGRAM 
+```
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+Developed by: VISHAL M.A
+RegisterNumber:212222230177
+```
+### SR FlipFlop
+```verilog
+module srflipflop(s,r,clk,q,qbar);
+input s,r,clk;
+output q,qbar;
+reg q,qbar;
+always @(posedge clk)
+begin 
+q<=s|(~r&q);
+qbar<=r|(~s&~q);
+end
+endmodule
+```
+### JK FlipFlop
+```verilog
+module jkflipflop(j,k,clk,q,qbar);
+input j,k,clk;
+output q,qbar;
+reg q,qbar;
+always @(posedge clk)
+begin 
+q<=(j&~q)|(~k&q);
+qbar<=~q;
+end
+endmodule
+```
+### T FlipFlop
+```verilog
+module tflipflop(t,clk,q,qbar);
+input t,clk;
+output q,qbar;
+reg q,qbar;
+always @(posedge clk)
+begin 
+q<=(t&~q)|(~t&q);
+qbar<=~q;
+end
+endmodule
+```
+### D FlipFlop
+```verilog
+module dflipflop(d,clk,q,qbar);
+input d,clk;
+output q,qbar;
+reg q,qbar;
+always @(posedge clk)
+begin 
+q<=d;
+qbar<=~q;
+end
+endmodule
+```
 
 
 
 
 
 
-### RTL LOGIC FOR FLIPFLOPS 
+## RTL LOGIC FOR FLIPFLOPS 
+### SR FlipFlop
+![srrtl](https://github.com/AkashRaja7/Experiment--05-Implementation-of-flipflops-using-verilog/assets/130548870/49188159-d87d-4b91-bdd1-88eaf1056017)
+### JK FlipFlop
+![jkrtl](https://github.com/AkashRaja7/Experiment--05-Implementation-of-flipflops-using-verilog/assets/130548870/17e4febe-54df-4e12-8766-b9a07f18ae00)
+### T FlipFlip
+![trtl](https://github.com/AkashRaja7/Experiment--05-Implementation-of-flipflops-using-verilog/assets/130548870/b0e5e52d-ef97-4802-a760-3dd8728ac332)
+### D FlipFlop
+![drtl](https://github.com/AkashRaja7/Experiment--05-Implementation-of-flipflops-using-verilog/assets/130548870/f786779f-8537-41d5-9e85-2da75e31d980)
 
 
 
@@ -127,14 +206,18 @@ RegisterNumber:
 
 
 
-
-### TIMING DIGRAMS FOR FLIP FLOPS 
-
-
-
-
-
+## TIMING DIGRAMS FOR FLIP FLOPS 
+### SR Flip Flop
+![srtd](https://github.com/AkashRaja7/Experiment--05-Implementation-of-flipflops-using-verilog/assets/130548870/3f25a452-7cbc-45e8-a023-9975e7fc6db2)
+### JK Flip Flop
+![jktd](https://github.com/AkashRaja7/Experiment--05-Implementation-of-flipflops-using-verilog/assets/130548870/c9a75617-0f23-4152-a446-8b9ecb67bbf7)
+### T FLIP FLOP
+![ttd](https://github.com/AkashRaja7/Experiment--05-Implementation-of-flipflops-using-verilog/assets/130548870/14b9bfa5-29d1-4084-9f99-5c9cd9fe7f5e)
+### D FlipFlop
+![dtd](https://github.com/AkashRaja7/Experiment--05-Implementation-of-flipflops-using-verilog/assets/130548870/851ce357-ed3f-4c9e-9182-83440cc8efe4)
 
 
 
 ### RESULTS 
++ All the flipflops are implementde using verilog and their functionality has been validated using their functional tables.
+
